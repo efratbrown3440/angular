@@ -1,0 +1,8 @@
+
+<h2>רשימת המוצרים שלי</h2>
+
+<div class="list-container">
+    @for(i of items; track i.id) {
+        <app-item [chiledItem]="i" (deleteRequest)="deleteItem($event)"></app-item>
+    }
+</div>
