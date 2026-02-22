@@ -1,0 +1,42 @@
+<div style="padding: 30px; direction: rtl; font-family: Arial;">
+  <h1>הרשמה למערכת</h1>
+
+  <form (ngSubmit)="submitForm()" #regForm="ngForm">
+    
+    <p>
+      <label>שם מלא:</label><br>
+      <input type="text" name="fullName" [(ngModel)]="user.fullName" required placeholder="הכנס שם מלא">
+    </p>
+
+    <p>
+      <label>גיל:</label><br>
+      <input type="number" name="age" [(ngModel)]="user.age" required min="1">
+    </p>
+
+    <p>
+      <label>אימייל:</label><br>
+      <input type="email" name="email" [(ngModel)]="user.email" required email placeholder="example@mail.com">
+    </p>
+
+    <p>
+      <label>
+        <input type="checkbox" name="isAgreed" [(ngModel)]="user.isAgreed" required>
+        אני מסכים לתנאי השימוש
+      </label>
+    </p>
+
+    <button type="submit" [disabled]="!regForm.valid">שלח והוסף לרשימה</button>
+  </form>
+
+  <hr>
+
+  <h2>רשימת משתמשים רשומים:</h2>
+  <ul *ngIf="userList.length > 0">
+  <li *ngFor="let person of userList">
+    <strong>שם:</strong> {{ person.fullName }} | 
+    <strong>גיל:</strong> {{ person.age }} | 
+    <strong>מייל:</strong> {{ person.email }}
+  </li>
+</ul>
+<p *ngIf="userList.length === 0">עדיין אין משתמשים רשומים.</p>
+</div>
